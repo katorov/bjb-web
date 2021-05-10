@@ -1,0 +1,21 @@
+{% extends 'admin_dashboard/base.html' %}
+{% load bootstrap4 %}
+
+{% block extra_style %}
+  form label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+{% endblock %}
+
+{% block title %}{{ title }} - удалить запись журнала{% endblock %}
+
+{% block content %}
+  <form action="" method="post" class="col-lg-4">
+    {% csrf_token %}
+    <fieldset disabled>
+      {% bootstrap_form form %}
+    </fieldset>
+    <button type="submit" class="btn btn-danger mt-1">Подтвердить удаление</button>
+  </form>
+{% endblock %}

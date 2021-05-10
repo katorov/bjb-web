@@ -1,0 +1,10 @@
+{% extends "admin_dashboard/base.html" %}
+
+{% block head %}<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>{% endblock %}
+{% block title %}Сон{% endblock %}
+
+{% block content %}
+  {% include 'admin_dashboard/record_list/sleep_records.html' with records=records add_link='add_sleep' %}
+  {% include 'admin_dashboard/snippets/analytics.html' with analytics=analytics %}
+{% endblock %}
+

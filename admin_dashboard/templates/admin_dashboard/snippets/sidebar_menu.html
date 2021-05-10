@@ -1,0 +1,57 @@
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+  <div class="position-sticky pt-3">
+    {% with request.resolver_match.url_name as url_name %}
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link {% if url_name == 'admin_dashboard' %}active{% endif %}" aria-current="page" href="{% url 'admin_dashboard' %}">
+          <span data-feather="home"></span>
+          Весь журнал
+        </a>
+      </li>
+
+      <li class="nav-item d-flex justify-content-between align-items-center">
+        <a class="nav-link {% if url_name == 'food' %}active{% endif %}" href="{% url 'food' %}">
+          <span data-feather="layers"></span>
+          Питание
+        </a>
+        <a class="nav-link link-secondary" href="{% url 'add_food' %}" aria-label="Add a new record"><span data-feather="plus-circle"></span></a>
+      </li>
+      <li class="nav-item d-flex justify-content-between align-items-center">
+        <a class="nav-link {% if url_name == 'sleep' %}active{% endif %}" href="{% url 'sleep' %}">
+          <span data-feather="layers"></span>
+          Сон
+        </a>
+        <a class="nav-link link-secondary" href="{% url 'add_sleep' %}" aria-label="Add a new record"><span data-feather="plus-circle"></span></a>
+      </li>
+      <li class="nav-item d-flex justify-content-between align-items-center">
+        <a class="nav-link {% if url_name == 'walk' %}active{% endif %}" href="{% url 'walk' %}">
+          <span data-feather="layers"></span>
+          Прогулки
+        </a>
+        <a class="nav-link link-secondary" href="{% url 'add_walk' %}" aria-label="Add a new record"><span data-feather="plus-circle"></span></a>
+      </li>
+      <li class="nav-item d-flex justify-content-between align-items-center">
+        <a class="nav-link {% if url_name == 'toilet' %}active{% endif %}" href="{% url 'toilet' %}">
+          <span data-feather="layers"></span>
+          Туалет
+        </a>
+        <a class="nav-link link-secondary" href="{% url 'add_toilet' %}" aria-label="Add a new record"><span data-feather="plus-circle"></span></a>
+      </li>
+      <li class="nav-item d-flex justify-content-between align-items-center">
+        <a class="nav-link {% if url_name == 'gymnastics' %}active{% endif %}" href="{% url 'gymnastics' %}">
+          <span data-feather="layers"></span>
+          Гимнастика
+        </a>
+        <a class="nav-link link-secondary" href="{% url 'add_gymnastics' %}" aria-label="Add a new record"><span data-feather="plus-circle"></span></a>
+      </li>
+      <li class="nav-item d-flex justify-content-between align-items-center">
+        <a class="nav-link {% if url_name == 'other_event' %}active{% endif %}" href="{% url 'other_event' %}">
+          <span data-feather="layers"></span>
+          Другие события
+        </a>
+        <a class="nav-link link-secondary" href="{% url 'add_other_event' %}" aria-label="Add a new record"><span data-feather="plus-circle"></span></a>
+      </li>
+    </ul>
+    {% endwith %}
+  </div>
+</nav>

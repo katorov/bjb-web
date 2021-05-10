@@ -1,0 +1,45 @@
+version: "3"
+
+
+services:
+  bjb_web_db:
+    image: postgres
+    env_file:
+      - ".env"
+    environment:
+      POSTGRES_PASSWORD: $DB_PASSWORD
+      POSTGRES_USER: $DB_USER
+      POSTGRES_DB: $DB_NAME
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  bjb_web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/usr/src/app
+    depends_on:
+      - bjb_web_db
+    restart: always
+    ports:
+      - "8000:8000"
+
+  nginx:
+    build:
+      context: ./docker/nginx
+      dockerfile: Dockerfile
+    depends_on:
+      - bjb_web
+      - bjb_web_db
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./static/:/static
+
+volumes:
+  pgdata:

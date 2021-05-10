@@ -1,0 +1,23 @@
+{% extends 'admin_dashboard/snippets/records.html' %}
+
+{% block thead %}
+  <tr>
+    <th>Дата/время</th>
+    <th>Длительность,мин</th>
+    <th class="text-end">Редактировать</th>
+  </tr>
+{% endblock %}
+
+
+{% block tbody %}
+  {% for record in records %}
+    <tr>
+      <td>{{ record.dt }}</td>
+      <td>{{ record.duration }}</td>
+      <td class="text-end">
+        <a class="btn btn-outline-secondary" href="{% url 'upd_walk' record.id %}"><span data-feather="edit"></span></a>
+        <a class="btn btn-outline-danger" href="{% url 'del_walk' record.id %}"><span data-feather="trash"></span></a>
+      </td>
+    </tr>
+  {% endfor %}
+{% endblock %}

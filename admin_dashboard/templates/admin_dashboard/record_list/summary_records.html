@@ -1,0 +1,25 @@
+{% extends 'admin_dashboard/snippets/records.html' %}
+
+{% block thead %}
+  <tr>
+    <th>Дата/время</th>
+    <th>Название</th>
+    <th>Описание</th>
+    <th class="text-end">Редактировать</th>
+  </tr>
+{% endblock %}
+
+
+{% block tbody %}
+  {% for record in records %}
+    <tr>
+      <td>{{ record.dt }}</td>
+      <td>{{ record.name }}</td>
+      <td>{{ record.description }}</td>
+      <td class="text-end">
+        <a class="btn btn-outline-secondary" href="{{ record.get_update_link }}"><span data-feather="edit"></span></a>
+        <a class="btn btn-outline-danger" href="{{ record.get_delete_link }}"><span data-feather="trash"></span></a>
+      </td>
+    </tr>
+  {% endfor %}
+{% endblock %}

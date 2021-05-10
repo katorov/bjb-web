@@ -1,0 +1,27 @@
+{% extends 'admin_dashboard/snippets/records.html' %}
+
+{% block thead %}
+  <tr>
+    <th>Дата/время</th>
+    <th>Категория еды</th>
+    <th>Название</th>
+    <th>Количество, грамм</th>
+    <th class="text-end">Редактировать</th>
+  </tr>
+{% endblock %}
+
+
+{% block tbody %}
+  {% for record in records %}
+    <tr>
+      <td>{{ record.dt }}</td>
+      <td>{{ record.get_category_display }}</td>
+      <td>{{ record.name }}</td>
+      <td>{{ record.quantity }}</td>
+      <td class="text-end">
+        <a class="btn btn-outline-secondary" href="{% url 'upd_food' record.id %}"><span data-feather="edit"></span></a>
+        <a class="btn btn-outline-danger" href="{% url 'del_food' record.id %}"><span data-feather="trash"></span></a>
+      </td>
+    </tr>
+  {% endfor %}
+{% endblock %}

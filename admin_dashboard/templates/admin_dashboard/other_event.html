@@ -1,0 +1,9 @@
+{% extends "admin_dashboard/base.html" %}
+
+{% block head %}<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>{% endblock %}
+{% block title %}Другие события{% endblock %}
+
+{% block content %}
+  {% include 'admin_dashboard/record_list/other_event_records.html' with records=records add_link='add_other_event' %}
+{% endblock %}
+
